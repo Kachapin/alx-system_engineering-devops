@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This script is displaying file content
+while read line; do
+    # Extract the username, user id, and home directory path
+    username=$(echo $line | awk -F: '{print $1}')
+    userid=$(echo $line | awk -F: '{print $3}')
+    homedir=$(echo $line | awk -F: '{print $6}')
+
+    # Display the extracted information
+    echo "Username: $username"
+    echo "User ID: $userid"
+    echo "Home directory: $homedir"
+    echo ""
+done < /etc/passwd
